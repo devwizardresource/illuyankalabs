@@ -14,9 +14,9 @@ export const siteConfig = {
   locale: "es_CO",
   foundingYear: 2021,
   contact: {
-    email: "hola@illuyankalabs.com",
-    phone: "+57 300 123 4567",
-    phoneHref: "tel:+573001234567",
+    email: "hello@illuyankalabs.com",
+    phone: "+57 300 944 4200",
+    phoneHref: "tel:+573009444200",
     location: "Bogotá, Colombia",
     country: "CO",
   },
