@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ILLUYANKA LABS — Design Tokens
+   Paleta extraída del logo: dragón cromado sobre espiral azul
+   con circuitos cian. Modo oscuro como tema principal.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* Fondos */
+  --bg: #020610;
+  --bg-soft: #050d1c;
+  --surface: #081426;
+  --surface-raised: #0c1c33;
+
+  /* Texto (todos ≥ 4.5:1 sobre cualquier superficie oscura) */
+  --fg: #eef4fb;
+  --fg-muted: #97a6ba;
+  --fg-subtle: #8091a6;
+
+  /* Marca */
+  --primary: #1378f9;
+  --primary-strong: #0d63d8;
+  --primary-bright: #4da3ff;
+  --accent: #22d9ee;
+  --chrome: #c9d4e0;
+
+  /* Líneas y estados */
+  --line: rgba(125, 176, 240, 0.14);
+  --line-strong: rgba(125, 176, 240, 0.3);
+  --ring: #4da3ff;
+  --glow: rgba(19, 120, 249, 0.35);
+
+  /* Superficies de vidrio */
+  --glass: rgba(12, 28, 51, 0.55);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f4f7fb;
+  --bg-soft: #eaf0f8;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+
+  --fg: #0b1626;
+  --fg-muted: #46586e;
+  --fg-subtle: #576578;
+
+  --primary: #0d63d8;
+  --primary-strong: #0b56bd;
+  --primary-bright: #0d63d8;
+  --accent: #0e7490;
+  --chrome: #46586e;
+
+  --line: rgba(13, 71, 140, 0.14);
+  --line-strong: rgba(13, 71, 140, 0.3);
+  --ring: #0d63d8;
+  --glow: rgba(19, 120, 249, 0.2);
+
+  --glass: rgba(255, 255, 255, 0.72);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-background-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-bright: var(--primary-bright);
+  --color-accent: var(--accent);
+  --color-chrome: var(--chrome);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-glass: var(--glass);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-ubuntu), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  --shadow-glow: 0 0 40px -8px var(--glow);
+  --shadow-glow-lg: 0 0 80px -12px var(--glow);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-breathe: breathe 5.5s ease-in-out infinite;
+  --animate-emerge: emerge-rise 1.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-spiral: spiral-spin 1.7s ease-out both;
+  --animate-beam: beam-up 1.5s ease-out both;
+  --animate-orbit: orbit 26s linear infinite;
+  --animate-orbit-reverse: orbit 34s linear infinite reverse;
+  --animate-marquee: marquee 44s linear infinite;
+  --animate-pulse-soft: pulse-soft 4.5s ease-in-out infinite;
+  --animate-drift: drift 14s ease-in-out infinite alternate;
+  --animate-gradient-pan: gradient-pan 9s ease-in-out infinite alternate;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.95;
+      transform: scale(1.12);
+    }
+  }
+  /* El dragón emerge de la plataforma */
+  @keyframes emerge-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(11%) scale(0.7);
+      filter: brightness(2.1) blur(5px);
+    }
+    45% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: brightness(1) blur(0);
+    }
+  }
+  /* Espiral de luz que envuelve la emergencia */
+  @keyframes spiral-spin {
+    0% {
+      opacity: 0;
+      transform: rotate(0turn) scale(0.3);
+    }
+    16% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(2.25turn) scale(1.15);
+    }
+  }
+  /* Haz de energía vertical desde la plataforma */
+  @keyframes beam-up {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+    22% {
+      opacity: 0.9;
+    }
+    65% {
+      opacity: 0.7;
+      transform: scaleY(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scaleY(1);
+    }
+  }
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(var(--drift-x, 30px), var(--drift-y, -60px), 0);
+    }
+  }
+  @keyframes gradient-pan {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================
+   Utilidades propias
+   ============================================================ */
+
+/* Titulares con degradado azul eléctrico → cian (energía del dragón) */
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--primary-bright) 0%,
+    var(--primary) 45%,
+    var(--accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Texto metálico (cromo del dragón) */
+@utility text-chrome {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--chrome) 55%,
+    #7f93a8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme="light"] .text-chrome {
+  background-image: linear-gradient(180deg, #1e293b 0%, #46586e 100%);
+}
+
+/* Rejilla técnica de fondo con desvanecido radial */
+@utility bg-grid {
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black, transparent);
+}
+
+/* ============================================================
+   Sistema de revelado al hacer scroll (IntersectionObserver + CSS)
+   El contenido es visible por defecto; solo se oculta cuando el
+   runtime marca <html class="js">, garantizando accesibilidad sin JS.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .js [data-reveal="visible"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Movimiento reducido: desactiva toda animación decorativa
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
