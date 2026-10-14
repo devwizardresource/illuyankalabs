@@ -1,27 +1,34 @@
 "use client";
 
-import Link from "next/link";
-import { useActionState, useEffect, useRef } from "react";
-import {
-  sendContactRequest,
-  type ContactField,
-  type ContactState,
-} from "@/services/contact";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { PROJECT_TYPES } from "@/constants/services";
+import { siteConfig } from "@/config/site";
 import { IconArrowRight } from "@/icons/ui";
 import { cn } from "@/utils/cn";
 
-const INITIAL_STATE: ContactState = { status: "idle", message: "" };
+type Field = "name" | "email" | "projectType" | "message";
+type Errors = Partial<Record<Field, string>>;
+
+const PROJECT_GROUPS = [...new Set(PROJECT_TYPES.map((type) => type.group))];
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const fieldStyles =
   "w-full rounded-xl border border-white/15 bg-white/5 px-4 text-sm text-white outline-none transition-colors duration-200 placeholder:text-[#8fa9cf] focus:border-[#4da3ff] focus:ring-2 focus:ring-[#4da3ff]/30 aria-invalid:border-red-300";
 const labelStyles = "mb-1.5 block text-sm font-medium text-white";
 
+function read(data: FormData, key: string): string {
+  const value = data.get(key);
+  return typeof value === "string" ? value.trim() : "";
+}
+
+/**
+ * Formulario de contacto sin servidor: al enviarlo abre la aplicación de
+ * correo del visitante con la solicitud ya redactada para el buzón del sitio.
+ */
 export function ContactForm() {
-  const [state, formAction, isPending] = useActionState(
-    sendContactRequest,
-    INITIAL_STATE,
-  );
+  const [errors, setErrors] = useState<Errors>({});
+  const [status, setStatus] = useState("");
   const projectTypeRef = useRef<HTMLSelectElement>(null);
 
   // Los enlaces de cada servicio preseleccionan el tipo de proyecto.
@@ -43,20 +50,64 @@ export function ContactForm() {
     return () => document.removeEventListener("click", onClick);
   }, []);
 
-  const values = state.values ?? {};
-  const errorFor = (field: ContactField) => state.errors?.[field];
-  const describedBy = (field: ContactField) =>
-    errorFor(field) ? `contacto-${field}-error` : undefined;
-  const fieldError = (field: ContactField) =>
-    errorFor(field) ? (
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = read(data, "name");
+    const company = read(data, "company");
+    const email = read(data, "email");
+    const phone = read(data, "phone");
+    const projectType = read(data, "projectType");
+    const message = read(data, "message");
+
+    const nextErrors: Errors = {};
+    if (name.length < 2) nextErrors.name = "Escribe tu nombre.";
+    if (!EMAIL_PATTERN.test(email)) {
+      nextErrors.email = "Escribe un correo electrónico válido.";
+    }
+    const project = PROJECT_TYPES.find((type) => type.value === projectType);
+    if (!project) nextErrors.projectType = "Elige el tipo de proyecto.";
+    if (message.length < 10) {
+      nextErrors.message = "Cuéntanos un poco más sobre tu reto (mínimo 10 caracteres).";
+    }
+
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0 || !project) {
+      setStatus("Revisa los campos marcados.");
+      return;
+    }
+
+    const subject = `Solicitud desde el sitio web: ${project.label}`;
+    const body = [
+      `Nombre: ${name}`,
+      `Empresa: ${company || "—"}`,
+      `Correo: ${email}`,
+      `Teléfono: ${phone || "—"}`,
+      `Tipo de proyecto: ${project.label}`,
+      "",
+      message,
+    ].join("\n");
+
+    window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    setStatus(
+      `Abrimos tu aplicación de correo con la solicitud lista: solo dale "Enviar". Si no se abrió, escríbenos a ${siteConfig.contact.email}.`,
+    );
+  };
+
+  const describedBy = (field: Field) =>
+    errors[field] ? `contacto-${field}-error` : undefined;
+  const fieldError = (field: Field) =>
+    errors[field] ? (
       <p id={`contacto-${field}-error`} className="mt-1.5 text-xs text-red-300">
-        {errorFor(field)}
+        {errors[field]}
       </p>
     ) : null;
 
   return (
     <form
-      action={formAction}
+      onSubmit={onSubmit}
       noValidate
       aria-label="Formulario de contacto"
       className="grid gap-4 text-left sm:grid-cols-2"
@@ -71,8 +122,7 @@ export function ContactForm() {
           required
           maxLength={80}
           autoComplete="name"
-          defaultValue={values.name}
-          aria-invalid={Boolean(errorFor("name")) || undefined}
+          aria-invalid={Boolean(errors.name) || undefined}
           aria-describedby={describedBy("name")}
           className={cn(fieldStyles, "h-11")}
         />
@@ -89,7 +139,6 @@ export function ContactForm() {
           name="company"
           maxLength={100}
           autoComplete="organization"
-          defaultValue={values.company}
           className={cn(fieldStyles, "h-11")}
         />
       </div>
@@ -105,8 +154,7 @@ export function ContactForm() {
           required
           maxLength={254}
           autoComplete="email"
-          defaultValue={values.email}
-          aria-invalid={Boolean(errorFor("email")) || undefined}
+          aria-invalid={Boolean(errors.email) || undefined}
           aria-describedby={describedBy("email")}
           className={cn(fieldStyles, "h-11")}
         />
@@ -125,12 +173,8 @@ export function ContactForm() {
           maxLength={20}
           autoComplete="tel"
           placeholder="+57"
-          defaultValue={values.phone}
-          aria-invalid={Boolean(errorFor("phone")) || undefined}
-          aria-describedby={describedBy("phone")}
           className={cn(fieldStyles, "h-11")}
         />
-        {fieldError("phone")}
       </div>
 
       <div className="sm:col-span-2">
@@ -142,18 +186,22 @@ export function ContactForm() {
           ref={projectTypeRef}
           name="projectType"
           required
-          defaultValue={values.projectType ?? ""}
-          aria-invalid={Boolean(errorFor("projectType")) || undefined}
+          defaultValue=""
+          aria-invalid={Boolean(errors.projectType) || undefined}
           aria-describedby={describedBy("projectType")}
           className={cn(fieldStyles, "h-11 appearance-none")}
         >
           <option value="" disabled className="bg-[#041226]">
             Elige un tipo de proyecto
           </option>
-          {PROJECT_TYPES.map((type) => (
-            <option key={type.value} value={type.value} className="bg-[#041226]">
-              {type.label}
-            </option>
+          {PROJECT_GROUPS.map((group) => (
+            <optgroup key={group} label={group} className="bg-[#041226]">
+              {PROJECT_TYPES.filter((type) => type.group === group).map((type) => (
+                <option key={type.value} value={type.value} className="bg-[#041226]">
+                  {type.label}
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
         {fieldError("projectType")}
@@ -168,57 +216,21 @@ export function ContactForm() {
           name="message"
           required
           rows={4}
-          maxLength={2000}
+          maxLength={1500}
           placeholder="Ej.: Hoy registramos los pedidos a mano y queremos automatizarlo."
-          defaultValue={values.message}
-          aria-invalid={Boolean(errorFor("message")) || undefined}
+          aria-invalid={Boolean(errors.message) || undefined}
           aria-describedby={describedBy("message")}
           className={cn(fieldStyles, "resize-y py-3")}
         />
         {fieldError("message")}
       </div>
 
-      {/* Honeypot antibots: invisible para personas y lectores de pantalla */}
-      <input
-        type="text"
-        name="sitio_web"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        className="hidden"
-      />
-
-      <div className="sm:col-span-2">
-        <div className="flex items-start gap-3">
-          <input
-            id="contacto-consent"
-            name="consent"
-            type="checkbox"
-            required
-            defaultChecked={state.status === "error" && !errorFor("consent")}
-            aria-invalid={Boolean(errorFor("consent")) || undefined}
-            aria-describedby={describedBy("consent")}
-            className="mt-0.5 size-4 shrink-0 accent-[#1378f9]"
-          />
-          <label htmlFor="contacto-consent" className="text-xs leading-relaxed text-[#b7cdec]">
-            Autorizo a Illuyanka Labs a tratar mis datos para responder mi
-            solicitud, según la{" "}
-            <Link href="/privacidad" className="text-white underline underline-offset-2">
-              Política de privacidad
-            </Link>{" "}
-            (Ley 1581 de 2012).
-          </label>
-        </div>
-        {fieldError("consent")}
-      </div>
-
-      <div className="flex flex-col items-start gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-start gap-3 sm:col-span-2">
         <button
           type="submit"
-          disabled={isPending}
-          className="group/button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-primary-strong to-primary px-7 font-display text-base font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow)] transition-all duration-300 hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
+          className="group/button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-primary-strong to-primary px-7 font-display text-base font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow)] transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
         >
-          {isPending ? "Enviando…" : "Enviar mi solicitud"}
+          Enviar mi solicitud
           <IconArrowRight className="size-4.5 transition-transform duration-300 group-hover/button:translate-x-1" />
         </button>
         <p
@@ -226,10 +238,10 @@ export function ContactForm() {
           aria-live="polite"
           className={cn(
             "min-h-5 text-sm",
-            state.status === "error" ? "text-red-300" : "text-[#22d9ee]",
+            Object.keys(errors).length > 0 ? "text-red-300" : "text-[#22d9ee]",
           )}
         >
-          {state.message}
+          {status}
         </p>
       </div>
     </form>

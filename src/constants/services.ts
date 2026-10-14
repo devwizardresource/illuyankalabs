@@ -126,8 +126,35 @@ export const SERVICES: readonly Service[] = [
   },
 ] as const;
 
-/** Opciones del campo "tipo de proyecto" del formulario de contacto. */
-export const PROJECT_TYPES: readonly { value: string; label: string }[] = [
-  ...SERVICES.map((service) => ({ value: service.id, label: service.title })),
-  { value: "otro", label: "Otro / aún no lo sé" },
+export interface ProjectType {
+  value: string;
+  label: string;
+  group: string;
+}
+
+/**
+ * Opciones del campo "¿Qué necesitas?" del formulario de contacto, agrupadas.
+ * Los servicios conservan su id para que sus enlaces preseleccionen la opción.
+ */
+export const PROJECT_TYPES: readonly ProjectType[] = [
+  ...SERVICES.map((service) => ({
+    value: service.id,
+    label: service.title,
+    group: "Servicios",
+  })),
+  { value: "web", label: "Página web corporativa", group: "Software y aplicaciones" },
+  { value: "ecommerce", label: "Tienda en línea (e-commerce)", group: "Software y aplicaciones" },
+  { value: "movil", label: "Aplicación móvil (Android / iOS)", group: "Software y aplicaciones" },
+  { value: "gestion", label: "Sistema de gestión a la medida (ERP, CRM, inventarios)", group: "Software y aplicaciones" },
+  { value: "portal", label: "Portal de clientes, proveedores o trámites", group: "Software y aplicaciones" },
+  { value: "educativa", label: "Plataforma educativa o campus virtual", group: "Software y aplicaciones" },
+  { value: "mvp", label: "Producto mínimo viable (MVP) para startup", group: "Software y aplicaciones" },
+  { value: "chatbot", label: "Chatbot o asistente virtual (web o WhatsApp)", group: "IA y automatización" },
+  { value: "documentos", label: "Lectura automática de documentos y facturas", group: "IA y automatización" },
+  { value: "integracion", label: "Integración entre sistemas", group: "IA y automatización" },
+  { value: "reportes", label: "Reportes e indicadores automáticos", group: "IA y automatización" },
+  { value: "modernizacion", label: "Modernizar o migrar un sistema existente", group: "Mejorar lo que ya tengo" },
+  { value: "soporte", label: "Soporte y mantenimiento de software", group: "Mejorar lo que ya tengo" },
+  { value: "auditoria", label: "Auditoría de seguridad o de código", group: "Mejorar lo que ya tengo" },
+  { value: "otro", label: "Otro / aún no lo sé", group: "Otro" },
 ];

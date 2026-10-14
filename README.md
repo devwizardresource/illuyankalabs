@@ -32,7 +32,7 @@ src/
 │   ├── ui/         Átomos reutilizables: Button, Badge, Container, GlassCard,
 │   │               SectionHeading, IconBox, Logo, StoryArt, ThemeToggle
 │   ├── sections/   Organismos de la landing: Header, Hero, About, Services, Process,
-│   │               Technologies, Contact, ContactForm, Footer, NewsletterForm
+│   │               Technologies, Contact, ContactForm (abre el correo del visitante), Footer, NewsletterForm
 │   └── animations/ Reveal (IO + CSS), Particles (seed determinista),
 │                   Tilt (parallax 3D), Emergence (dragón emergiendo en espiral)
 ├── hooks/          use-in-view, use-theme, use-scroll-lock
@@ -40,7 +40,7 @@ src/
 ├── lib/            structured-data (JSON-LD), rate-limit (límite de envíos por IP)
 ├── constants/      Contenido tipado: navigation, services, technologies, about, process
 ├── config/         site.ts — única fuente de verdad (nombre, URL, contacto, redes)
-├── services/       Server Actions: contact.ts y newsletter.ts (validación + honeypot + límite)
+├── services/       newsletter.ts — Server Action (validación + honeypot + límite)
 ├── types/          Contratos de contenido (Service, CaseStudy, Testimonial…)
 ├── utils/          cn() — composición de clases
 ├── styles/         globals.css — design tokens, temas, keyframes
@@ -77,7 +77,7 @@ npm run typecheck  # TypeScript sin emitir
 
 ### Variables de entorno
 
-Copia `.env.example` → `.env` y ajusta `NEXT_PUBLIC_SITE_URL` con el dominio real (usado por canonical, sitemap, robots y JSON-LD). Para que el formulario de contacto envíe correos, define `RESEND_API_KEY` y `CONTACT_FROM_EMAIL`.
+Copia `.env.example` → `.env` y ajusta `NEXT_PUBLIC_SITE_URL` con el dominio real (usado por canonical, sitemap, robots y JSON-LD).
 
 ## Despliegue
 
