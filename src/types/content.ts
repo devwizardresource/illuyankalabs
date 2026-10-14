@@ -10,8 +10,12 @@ export interface NavItem {
 export interface Service {
   id: string;
   title: string;
+  /** Resultado para el cliente: abre la tarjeta. */
+  outcome: string;
   description: string;
   capabilities: readonly string[];
+  /** Llamado a la acción específico del servicio. */
+  cta: string;
   icon: IconComponent;
 }
 
@@ -23,20 +27,18 @@ export interface Technology {
   icon: IconComponent;
 }
 
-export interface CompanyValue {
+/** Bloque de texto breve con icono: compromisos, beneficios, segmentos. */
+export interface Feature {
   id: string;
   title: string;
   description: string;
   icon: IconComponent;
 }
 
-export interface Stat {
+export interface ProcessStep {
   id: string;
-  value: number;
-  decimals: number;
-  suffix: string;
-  label: string;
-  icon: IconComponent;
+  title: string;
+  description: string;
 }
 
 export interface SocialLink {

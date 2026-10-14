@@ -35,17 +35,14 @@ const footerLink =
 
 export function Footer() {
   return (
-    <footer
-      id="contacto"
-      className="scroll-mt-24 border-t border-line bg-background-soft"
-    >
+    <footer className="border-t border-line bg-background-soft">
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_0.8fr_1fr_1.2fr]">
           <div>
-            <Logo size="lg" />
+            <Logo size="lg" alt="Isotipo de ILLUYANKA LABS: dragón envolviendo la letra I" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              Innovamos, desarrollamos y transformamos ideas en soluciones
-              tecnológicas que impulsan el futuro.
+              Software a la medida, inteligencia artificial y automatización
+              hechos en Bogotá para organizaciones que quieren crecer.
             </p>
             <ul className="mt-6 flex gap-3" aria-label="Redes sociales">
               {SOCIAL_LINKS.map((social) => (
@@ -107,9 +104,10 @@ export function Footer() {
               ))}
             </ul>
 
-            <h3 className={`${footerHeading} mt-9`}>Newsletter</h3>
+            <h3 className={`${footerHeading} mt-9`}>Boletín</h3>
             <p className="mt-3 text-xs leading-relaxed text-subtle">
-              Tendencias de IA, cloud e ingeniería, una vez al mes. Sin spam.
+              Ideas prácticas de IA, automatización y nube, una vez al mes.
+              Sin spam.
             </p>
             <NewsletterForm />
           </div>

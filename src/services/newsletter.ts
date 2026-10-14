@@ -1,5 +1,8 @@
 "use server";
 
+import { headers } from "next/headers";
+import { isRateLimited } from "@/lib/rate-limit";
+
 export interface NewsletterState {
   status: "idle" | "success" | "error";
   message: string;
@@ -30,9 +33,22 @@ export async function subscribeToNewsletter(
     };
   }
 
-  const normalized = email.trim().toLowerCase();
-  // Punto de integración con el proveedor de email marketing.
-  console.info(`[newsletter] nueva suscripción: ${normalized}`);
+  const requestHeaders = await headers();
+  const ip =
+    requestHeaders.get("x-real-ip") ??
+    requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "desconocido";
+  if (isRateLimited(`newsletter:${ip}`, { limit: 5, windowMs: 10 * 60_000 })) {
+    return {
+      status: "error",
+      message: "Demasiados intentos. Intenta de nuevo en unos minutos.",
+    };
+  }
+
+  const normalized = email.trim().toLowerCase().slice(0, 254);
+  // Punto de integración con el proveedor de email marketing
+  // (no se registra el correo en los logs para no exponer datos personales).
+  void normalized;
 
   return { status: "success", message: "¡Listo! Te has suscrito correctamente." };
 }

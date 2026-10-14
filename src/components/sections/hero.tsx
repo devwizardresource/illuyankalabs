@@ -13,14 +13,14 @@ import {
   IconChevronDown,
   IconSparkles,
 } from "@/icons/ui";
-import { IconNeural, IconShield } from "@/icons/services";
+import { IconShield } from "@/icons/services";
 import logoMark from "@/assets/images/logo-mark.png";
 
 const TRUST_MARKERS = [
-  "Soluciones a la medida",
-  "Escalables",
-  "Seguras",
-  "Innovadoras",
+  "Código 100 % original",
+  "Probado en laboratorio",
+  "Seguro desde el diseño",
+  "Listo para crecer",
 ] as const;
 
 export function Hero() {
@@ -42,7 +42,7 @@ export function Hero() {
           <Reveal>
             <Badge>
               <IconSparkles className="size-3.5" />
-              Innovación · IA · Automatización · Cloud
+              Software · IA · Automatización · Bogotá, Colombia
             </Badge>
           </Reveal>
 
@@ -57,18 +57,20 @@ export function Hero() {
 
           <Reveal delay={180}>
             <p className="max-w-xl text-lg leading-relaxed text-muted">
-              Desarrollamos soluciones digitales de última generación que
-              impulsan la transformación y el crecimiento de tu negocio.
+              Creamos software a la medida, inteligencia artificial y
+              automatización para empresas, instituciones y startups en
+              Colombia, para que tu organización trabaje más rápido, gaste
+              menos y crezca con seguridad.
             </p>
           </Reveal>
 
           <Reveal delay={270} className="flex flex-wrap items-center gap-4">
             <Button href="#servicios" size="lg">
-              Explorar servicios
+              Ver soluciones
               <IconArrowRight className="size-4.5 transition-transform duration-300 group-hover/button:translate-x-1" />
             </Button>
             <Button href="#contacto" size="lg" variant="secondary">
-              Cotiza tu proyecto
+              Habla con nuestro equipo
             </Button>
           </Reveal>
 
@@ -132,17 +134,10 @@ export function Hero() {
               <GlassCard className="absolute top-[13%] -right-2 hidden items-center gap-3 px-4 py-3 sm:flex lg:-right-4">
                 <IconShield className="size-5 text-accent" />
                 <div className="text-xs leading-tight">
-                  <p className="font-semibold text-foreground">99.9% uptime</p>
-                  <p className="text-subtle">Operación 24/7</p>
-                </div>
-              </GlassCard>
-              <GlassCard className="absolute bottom-[16%] -left-2 hidden items-center gap-3 px-4 py-3 sm:flex lg:-left-6">
-                <IconNeural className="size-5 text-primary-bright" />
-                <div className="text-xs leading-tight">
                   <p className="font-semibold text-foreground">
-                    IA en producción
+                    Probado en laboratorio
                   </p>
-                  <p className="text-subtle">Agentes y copilotos</p>
+                  <p className="text-subtle">Antes de cada entrega</p>
                 </div>
               </GlassCard>
             </div>

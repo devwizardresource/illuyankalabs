@@ -1,9 +1,9 @@
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Services } from "@/components/sections/services";
-import { Stats } from "@/components/sections/stats";
+import { Process } from "@/components/sections/process";
 import { Technologies } from "@/components/sections/technologies";
-import { Cta } from "@/components/sections/cta";
+import { Contact } from "@/components/sections/contact";
 import {
   organizationJsonLd,
   serializeJsonLd,
@@ -27,9 +27,9 @@ export default function HomePage() {
         <Hero />
         <About />
         <Services />
-        <Stats />
+        <Process />
         <Technologies />
-        <Cta />
+        <Contact />
       </main>
     </>
   );

@@ -111,14 +111,6 @@ export function IconChevronDown(props: Props) {
   );
 }
 
-export function IconPlay(props: Props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
-      <path d="M8.5 5.8c0-1 1.1-1.6 2-1.1l9.6 6.2c.8.5.8 1.7 0 2.2l-9.6 6.2c-.9.5-2-.1-2-1.1V5.8Z" />
-    </svg>
-  );
-}
-
 export function IconClock(props: Props) {
   return (
     <svg {...strokeProps} {...props}>

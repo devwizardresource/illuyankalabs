@@ -7,19 +7,26 @@ interface LogoProps {
   className?: string;
   /** Carga inmediata (header: visible en todas las páginas). */
   priority?: boolean;
+  /** Texto alternativo del isotipo; vacío cuando un enlace ya nombra el logo. */
+  alt?: string;
 }
 
 /**
  * Isotipo del dragón + wordmark en HTML (texto real: accesible,
  * nítido en cualquier densidad y estilizable por tema).
  */
-export function Logo({ size = "sm", className, priority = false }: LogoProps) {
+export function Logo({
+  size = "sm",
+  className,
+  priority = false,
+  alt = "",
+}: LogoProps) {
   const markSize = size === "sm" ? 40 : 56;
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
       <Image
         src={logoMark}
-        alt=""
+        alt={alt}
         width={markSize}
         height={markSize}
         priority={priority}

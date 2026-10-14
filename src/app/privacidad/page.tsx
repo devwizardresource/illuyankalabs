@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <LegalArticle
       eyebrow="Legal"
       title="Política de privacidad"
-      updated="5 de julio de 2026"
+      updated="13 de octubre de 2026"
     >
       <section>
         <h2>1. Responsable del tratamiento</h2>
@@ -29,11 +29,12 @@ export default function PrivacyPage() {
         <p>Únicamente tratamos los datos que nos proporcionas de forma voluntaria:</p>
         <ul>
           <li>
-            Correo electrónico, cuando te suscribes a nuestro newsletter.
+            Correo electrónico, cuando te suscribes a nuestro boletín.
           </li>
           <li>
-            Datos de contacto e información del proyecto, cuando nos escribes
-            por correo o teléfono.
+            Nombre, empresa, correo, teléfono, tipo de proyecto y mensaje,
+            cuando usas el formulario de contacto o nos escribes por correo o
+            teléfono.
           </li>
         </ul>
         <p>
@@ -46,7 +47,9 @@ export default function PrivacyPage() {
         <p>
           Usamos tus datos exclusivamente para responder a tus consultas,
           preparar propuestas comerciales y, si lo autorizaste, enviarte
-          nuestro newsletter. No vendemos ni cedemos tus datos a terceros.
+          nuestro boletín. No vendemos ni cedemos tus datos a terceros. El
+          tratamiento se realiza conforme a la Ley 1581 de 2012 y el Decreto
+          1377 de 2013 de Colombia.
         </p>
       </section>
       <section>
@@ -61,10 +64,10 @@ export default function PrivacyPage() {
       <section>
         <h2>5. Tus derechos</h2>
         <p>
-          Puedes ejercer tus derechos de acceso, rectificación, cancelación y
-          oposición en cualquier momento escribiendo a{" "}
+          Puedes conocer, actualizar, rectificar y suprimir tus datos, o
+          revocar la autorización, en cualquier momento escribiendo a{" "}
           {siteConfig.contact.email}. También puedes darte de baja del
-          newsletter desde cualquiera de nuestros correos.
+          boletín desde cualquiera de nuestros correos.
         </p>
       </section>
     </LegalArticle>

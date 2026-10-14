@@ -4,11 +4,11 @@
  */
 export const siteConfig = {
   name: "ILLUYANKA LABS",
-  legalName: "Illuyanka Labs",
+  legalName: "Illuyanka Labs S.A.S.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://illuyankalabs.com",
-  title: "ILLUYANKA LABS — Software, IA, Automatización y Cloud",
+  title: "Desarrollo de software, IA y automatización en Colombia | ILLUYANKA LABS",
   description:
-    "Laboratorio digital de ingeniería de software, inteligencia artificial, cloud computing, automatización y ciberseguridad. Construimos el futuro con tecnología inteligente desde Colombia.",
+    "Desarrollo de software a la medida, inteligencia artificial y automatización de procesos en Bogotá. Soluciones seguras y escalables para empresas e instituciones en Colombia.",
   tagline: "Software · IA · Automatización · Cloud",
   language: "es",
   locale: "es_CO",
@@ -19,6 +19,8 @@ export const siteConfig = {
     phoneHref: "tel:+573009444200",
     location: "Bogotá, Colombia",
     country: "CO",
+    /** Único tiempo de respuesta comprometido en todo el sitio. */
+    responseTime: "menos de 24 horas",
   },
   social: {
     github: "https://github.com/illuyankalabs",
@@ -27,16 +29,17 @@ export const siteConfig = {
     youtube: "https://www.youtube.com/@illuyankalabs",
   },
   keywords: [
-    "desarrollo de software",
-    "inteligencia artificial",
-    "cloud computing",
-    "automatización",
+    "desarrollo de software a la medida",
+    "empresa de desarrollo de software en Bogotá",
+    "desarrollo de software en Colombia",
+    "inteligencia artificial para empresas",
+    "automatización de procesos",
+    "software para universidades",
+    "transformación digital Colombia",
+    "servicios en la nube",
     "ciberseguridad",
     "ciencia de datos",
-    "DevOps",
     "consultoría tecnológica",
-    "Bogotá",
-    "Colombia",
   ],
 } as const;
 

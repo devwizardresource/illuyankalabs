@@ -29,6 +29,11 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains",
+  },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  {
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   },
@@ -37,6 +42,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Los formularios solo envían texto: se rechaza cualquier payload grande.
+    serverActions: { bodySizeLimit: "64kb" },
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },

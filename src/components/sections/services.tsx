@@ -17,10 +17,11 @@ export function Services() {
             eyebrow="Servicios"
             title={
               <>
-                Nuestras <span className="text-gradient">soluciones</span>
+                Soluciones que se notan en tus{" "}
+                <span className="text-gradient">resultados</span>
               </>
             }
-            description="Ocho disciplinas, un mismo estándar de ingeniería: construir tecnología precisa, segura y lista para escalar."
+            description="Desarrollo de software, inteligencia artificial y automatización para empresas e instituciones en Colombia. Cada solución empieza por el resultado que necesitas."
           />
         </Reveal>
 
@@ -32,9 +33,12 @@ export function Services() {
                   icon={service.icon}
                   className="group-hover:scale-105 group-hover:border-line-strong group-hover:shadow-glow"
                 />
-                <h3 className="mt-5 font-display text-lg leading-snug font-bold">
+                <h3 className="mt-5 text-xs font-medium tracking-[0.14em] text-primary-bright uppercase">
                   {service.title}
                 </h3>
+                <p className="mt-2 font-display text-lg leading-snug font-bold">
+                  {service.outcome}
+                </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
@@ -42,20 +46,20 @@ export function Services() {
                   {service.capabilities.map((capability) => (
                     <li
                       key={capability}
-                      className="flex items-center gap-2 text-xs text-subtle"
+                      className="flex items-start gap-2 text-xs text-subtle"
                     >
-                      <IconCheck className="size-3.5 shrink-0 text-accent" />
+                      <IconCheck className="mt-px size-3.5 shrink-0 text-accent" />
                       {capability}
                     </li>
                   ))}
                 </ul>
                 <a
                   href="#contacto"
-                  aria-label={`Conocer más sobre ${service.title}`}
-                  className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-primary-bright transition-colors hover:text-accent"
+                  data-project-type={service.id}
+                  className="mt-auto inline-flex items-start gap-1.5 pt-6 text-sm font-medium text-primary-bright transition-colors hover:text-accent"
                 >
-                  Conocer más
-                  <IconArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  {service.cta}
+                  <IconArrowRight className="mt-0.5 size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </article>
             </Reveal>

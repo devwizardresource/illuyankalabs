@@ -29,6 +29,7 @@ export function organizationJsonLd() {
       telephone: siteConfig.contact.phone,
       availableLanguage: ["es", "en"],
     },
+    areaServed: { "@type": "Country", name: "Colombia" },
     sameAs: Object.values(siteConfig.social),
     knowsAbout: [...siteConfig.keywords],
   };

@@ -144,23 +144,43 @@ export function IconLock(props: Props) {
   );
 }
 
-/** Misión */
-export function IconMission(props: Props) {
+/** Segmento: empresas */
+export function IconBuilding(props: Props) {
   return (
     <svg {...strokeProps} {...props}>
-      <path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5" />
-      <path d="M12 8a4 4 0 1 0 4 4" />
-      <path d="M12 12 18.5 5.5M18.5 5.5V2.9m0 2.6h2.6" />
+      <path d="M4.5 20.5v-14l7-3v17M11.5 8.5h8v12" />
+      <path d="M3 20.5h18M7.5 9h1.5m-1.5 3.5h1.5M7.5 16h1.5m5.5-4h2m-2 3.5h2" />
     </svg>
   );
 }
 
-/** Visión */
-export function IconVision(props: Props) {
+/** Segmento: instituciones educativas */
+export function IconGraduation(props: Props) {
   return (
     <svg {...strokeProps} {...props}>
-      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
-      <circle cx="12" cy="12" r="3" />
+      <path d="m2.5 9 9.5-4.5L21.5 9 12 13.5 2.5 9Z" />
+      <path d="M6.5 11v4.5c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3V11M21.5 9v5" />
+    </svg>
+  );
+}
+
+/** Segmento: entidades públicas */
+export function IconLandmark(props: Props) {
+  return (
+    <svg {...strokeProps} {...props}>
+      <path d="M3 9.5 12 4l9 5.5H3ZM5.5 9.5v8m4.3-8v8m4.4-8v8m4.3-8v8M3 20.5h18" />
+    </svg>
+  );
+}
+
+/** Segmento: startups */
+export function IconRocket(props: Props) {
+  return (
+    <svg {...strokeProps} {...props}>
+      <path d="M14 4.5c3-1.5 5.5-1 5.5-1s.5 2.5-1 5.5l-5.5 5.5-4.5-4.5L14 4.5Z" />
+      <path d="M8.5 10 5 10.5l-2 2.5 4 1M14 15.5l-.5 3.5-2.5 2-1-4" />
+      <circle cx="15.5" cy="8.5" r="1.3" />
+      <path d="M6.5 17.5c-1 .5-2 2-2 2s1.5-1 2-2Z" />
     </svg>
   );
 }

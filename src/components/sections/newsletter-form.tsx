@@ -45,10 +45,10 @@ export function NewsletterForm() {
         <button
           type="submit"
           disabled={isPending}
-          aria-label="Suscribirme al newsletter"
-          className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-primary-strong to-primary text-white transition-all duration-300 hover:brightness-110 disabled:opacity-60"
+          className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-full px-4 text-sm font-medium bg-linear-to-r from-primary-strong to-primary text-white transition-all duration-300 hover:brightness-110 disabled:opacity-60"
         >
-          <IconSend className="size-4.5" />
+          Suscribirme
+          <IconSend className="size-4" />
         </button>
       </div>
       <p
