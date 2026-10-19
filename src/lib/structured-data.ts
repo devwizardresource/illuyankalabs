@@ -16,7 +16,6 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     foundingDate: String(siteConfig.foundingYear),
     email: siteConfig.contact.email,
-    telephone: siteConfig.contact.phone,
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.contact.location.split(",")[0].trim(),
@@ -26,11 +25,15 @@ export function organizationJsonLd() {
       "@type": "ContactPoint",
       contactType: "sales",
       email: siteConfig.contact.email,
-      telephone: siteConfig.contact.phone,
+      url: siteConfig.contact.whatsapp.href,
       availableLanguage: ["es", "en"],
     },
-    areaServed: { "@type": "Country", name: "Colombia" },
-    sameAs: Object.values(siteConfig.social),
+    areaServed: [
+      { "@type": "Country", name: "Colombia" },
+      { "@type": "Place", name: "Latinoamérica" },
+      { "@type": "Place", name: "Mundo" },
+    ],
+    sameAs: [...Object.values(siteConfig.social), siteConfig.contact.whatsapp.href],
     knowsAbout: [...siteConfig.keywords],
   };
 }

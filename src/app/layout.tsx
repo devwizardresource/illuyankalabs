@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Inter, Ubuntu } from "next/font/google";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
+import { WhatsAppFloat } from "@/components/ui/whatsapp-button";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         {children}
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );

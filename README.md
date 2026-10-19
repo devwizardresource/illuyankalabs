@@ -5,7 +5,7 @@
 **Software · IA · Automatización · Cloud**
 
 Landing page de producción construida con Next.js 15, React 19, TypeScript y Tailwind CSS v4, desde Colombia.
-Identidad visual derivada del logo del dragón: cromo metálico, azul eléctrico `#1378f9` y cian de energía `#22d9ee` sobre navy profundo.
+Identidad visual derivada del logo: cromo metálico, azul eléctrico `#1378f9`, violeta futurista `#9d5cff` y cian de energía `#22d9ee` sobre navy profundo.
 
 </div>
 
@@ -30,11 +30,11 @@ src/
 ├── app/            Rutas, layout raíz, SEO (robots, sitemap, manifest, iconos), 404, legales
 ├── components/
 │   ├── ui/         Átomos reutilizables: Button, Badge, Container, GlassCard,
-│   │               SectionHeading, IconBox, Logo, StoryArt, ThemeToggle
+│   │               SectionHeading, IconBox, Logo, BrandVideo, ThemeToggle
 │   ├── sections/   Organismos de la landing: Header, Hero, About, Services, Process,
 │   │               Technologies, Contact, ContactForm (abre el correo del visitante), Footer, NewsletterForm
 │   └── animations/ Reveal (IO + CSS), Particles (seed determinista),
-│                   Tilt (parallax 3D), Emergence (dragón emergiendo en espiral)
+│                   Tilt (parallax 3D), Emergence (isotipo emergiendo en espiral)
 ├── hooks/          use-in-view, use-theme, use-scroll-lock
 ├── icons/          SVG propios: ui, services, tech (marcas geométricas), social
 ├── lib/            structured-data (JSON-LD), rate-limit (límite de envíos por IP)
@@ -51,14 +51,17 @@ src/
 
 ## Decisiones técnicas clave
 
-- **Server Components por defecto.** Solo los componentes interactivos envían JS al cliente (Header, Reveal, Tilt, Emergence, ThemeToggle, ContactForm, NewsletterForm). First Load JS de la home: **~112 kB** (~100 kB son React/Next base).
-- **Animaciones sin librerías.** `Reveal` usa IntersectionObserver + transiciones CSS; el dragón del hero combina flotación, parallax 3D al puntero (`Tilt`) y una emergencia con espiral de luz (`Emergence`, al hacer hover y cada 70 s). Sin JavaScript el contenido es visible; con `prefers-reduced-motion` no se anima nada.
+- **Server Components por defecto.** Solo los componentes interactivos envían JS al cliente (Header, Reveal, Tilt, Emergence, ThemeToggle, BrandVideo, ContactForm, NewsletterForm). First Load JS de la home: **~112 kB** (~100 kB son React/Next base).
+- **Animaciones sin librerías.** `Reveal` usa IntersectionObserver + transiciones CSS; el isotipo del hero combina flotación, parallax 3D al puntero (`Tilt`) y una emergencia con espiral de luz (`Emergence`, al hacer hover y cada 70 s). Sin JavaScript el contenido es visible; con `prefers-reduced-motion` no se anima nada.
 - **Partículas renderizadas en servidor** con PRNG determinista (mulberry32): mismo HTML en servidor y cliente → sin errores de hidratación y 0 KB de JS.
 - **Tema oscuro por defecto, claro opcional.** Variables CSS semánticas conmutadas por `data-theme`; script inline anti-FOUC lee `localStorage` antes del primer paint.
 - **Contraste verificado**: auditoría axe-core (WCAG 2A/2AA/2.1AA) con **cero violaciones en ambos temas**. Los botones primarios usan `#0d63d8` (5.5:1 con texto blanco).
 - **Marcas tecnológicas propias**: SVG geométricos minimalistas + etiqueta de texto (sin reproducir assets de terceros con licencias inciertas).
 - **Server Action del newsletter** con honeypot antibots y validación en servidor; funciona incluso sin JavaScript (progressive enhancement). El proveedor de email se conecta en `src/services/newsletter.ts`.
 - **Seguridad**: CSP restrictiva, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy` en `next.config.ts`; JSON-LD serializado con escape de `<`.
+
+- **Video de marca** (`public/videos/illuyanka-intro.mp4`, 720p H.264 con `faststart`, ~3.4 MB, generado desde `resources/videos/`): se reproduce en silencio solo mientras está en pantalla, con controles propios de pausa y sonido; con `prefers-reduced-motion` no arranca solo.
+- **Navegación con rutas absolutas** (`/#seccion`): desde Términos, Privacidad o la 404 el menú vuelve al inicio en la sección elegida.
 
 ## SEO
 
@@ -94,4 +97,4 @@ Compatible con cualquier plataforma Node/Next (Vercel, Netlify, Cloudflare, cont
 
 ---
 
-© 2026 ILLUYANKA LABS · Construido desde Colombia 🐉
+© 2026 ILLUYANKA LABS · Construido desde Colombia

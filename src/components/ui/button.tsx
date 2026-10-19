@@ -24,9 +24,9 @@ type ButtonProps = AnchorProps | NativeButtonProps;
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "bg-linear-to-r from-primary-strong to-primary text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_60px_-8px_var(--glow)] hover:brightness-110",
+    "bg-linear-to-r from-primary-strong to-violet-strong text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow),0_0_48px_-14px_var(--glow-violet)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_60px_-8px_var(--glow),0_0_70px_-12px_var(--glow-violet)] hover:brightness-110",
   secondary:
-    "border border-line-strong bg-glass text-foreground backdrop-blur-md hover:border-primary hover:text-primary-bright",
+    "border border-line-strong bg-glass text-foreground backdrop-blur-md hover:border-violet hover:text-violet-bright hover:shadow-glow-violet",
   ghost: "text-muted hover:text-foreground",
 };
 

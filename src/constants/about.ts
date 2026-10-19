@@ -117,7 +117,3 @@ export const SEGMENTS: readonly Feature[] = [
     icon: IconRocket,
   },
 ] as const;
-
-/** Origen del nombre, como metáfora al servicio del cliente. */
-export const NAME_ORIGIN =
-  "Illuyanka es el dragón de la mitología hitita, símbolo de fuerza y renovación. Ponemos esa misma fuerza al servicio de la transformación de tu organización.";

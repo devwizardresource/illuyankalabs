@@ -28,7 +28,7 @@ export function Services() {
         <ul className="mt-16 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {SERVICES.map((service, index) => (
             <Reveal key={service.id} as="li" delay={(index % 4) * 90} className="h-full">
-              <article className="group flex h-full flex-col rounded-2xl border border-line bg-surface/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-glow">
+              <article className="group flex h-full flex-col rounded-2xl border border-line bg-surface/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet/50 hover:shadow-glow-violet">
                 <IconBox
                   icon={service.icon}
                   className="group-hover:scale-105 group-hover:border-line-strong group-hover:shadow-glow"

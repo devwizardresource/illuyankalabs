@@ -7,6 +7,7 @@ import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { IconClose, IconMenu } from "@/icons/ui";
 import { cn } from "@/utils/cn";
 
@@ -54,7 +55,7 @@ export function Header() {
       >
         <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between gap-4 px-6 sm:px-8">
         <Link
-          href="#inicio"
+          href="/#inicio"
           aria-label="ILLUYANKA LABS — ir al inicio"
           onClick={closeMenu}
           className="rounded-lg"
@@ -66,12 +67,12 @@ export function Header() {
           <ul className="flex items-center gap-2">
             {NAV_ITEMS.map((item) => (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
-                  className="rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors duration-200 hover:bg-surface/80 hover:text-foreground"
+                  className="rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors duration-200 hover:bg-surface/80 hover:text-violet-bright"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -80,7 +81,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <div className="hidden sm:block">
-            <Button href="#contacto">Cotiza tu proyecto</Button>
+            <Button href="/#contacto">Cotiza tu proyecto</Button>
           </div>
           <button
             ref={menuButtonRef}
@@ -114,7 +115,7 @@ export function Header() {
             className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 sm:px-8"
           >
             {NAV_ITEMS.map((item, index) => (
-              <a
+              <Link
                 key={item.href}
                 ref={index === 0 ? firstLinkRef : undefined}
                 href={item.href}
@@ -122,16 +123,17 @@ export function Header() {
                 className="rounded-xl border border-transparent px-4 py-3.5 font-display text-xl font-medium text-foreground transition-colors duration-200 hover:border-line hover:bg-surface"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button
-              href="#contacto"
+              href="/#contacto"
               size="lg"
               className="mt-6"
               onClick={closeMenu}
             >
               Cotiza tu proyecto
             </Button>
+            <WhatsAppButton size="lg" onClick={closeMenu} />
           </nav>
         </div>
       ) : null}

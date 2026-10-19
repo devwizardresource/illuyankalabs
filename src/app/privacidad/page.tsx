@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           <li>
             Nombre, empresa, correo, teléfono, tipo de proyecto y mensaje,
             cuando nos escribes desde el formulario de contacto (que abre tu
-            aplicación de correo), por correo o por teléfono.
+            aplicación de correo), por correo o por WhatsApp.
           </li>
         </ul>
         <p>

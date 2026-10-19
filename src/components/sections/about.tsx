@@ -3,13 +3,13 @@ import { Container } from "@/components/ui/container";
 import { GlassCard } from "@/components/ui/glass-card";
 import { IconBox } from "@/components/ui/icon-box";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { StoryArt } from "@/components/ui/story-art";
+import { BrandVideo } from "@/components/ui/brand-video";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { Reveal } from "@/components/animations/reveal";
 import {
   ABOUT_INTRO,
   BENEFITS,
   COMMITMENTS,
-  NAME_ORIGIN,
   PURPOSE,
   SEGMENTS,
 } from "@/constants/about";
@@ -27,8 +27,8 @@ export function About() {
             eyebrow="Nosotros"
             title={
               <>
-                El laboratorio detrás del{" "}
-                <span className="text-gradient">dragón</span>
+                El laboratorio que impulsa tu{" "}
+                <span className="text-gradient">transformación</span>
               </>
             }
             description={ABOUT_INTRO}
@@ -47,22 +47,13 @@ export function About() {
               ))}
             </Reveal>
 
-            {/* Panel del origen del nombre */}
+            {/* Video de presentación de la marca */}
             <Reveal delay={100}>
-              <figure className="group relative overflow-hidden rounded-2xl border border-line shadow-glow">
-                <div className="relative aspect-video">
-                  <StoryArt />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-linear-to-t from-[#020a1c]/90 via-[#020a1c]/40 to-transparent"
-                  />
-                  <figcaption className="absolute inset-x-0 bottom-0 p-6">
-                    <p className="font-display text-xs font-medium tracking-[0.2em] text-[#4da3ff] uppercase">
-                      Por qué Illuyanka
-                    </p>
-                    <p className="mt-2 max-w-md text-sm leading-relaxed text-white sm:text-base">
-                      {NAME_ORIGIN}
-                    </p>
+              <figure className="relative overflow-hidden rounded-2xl border border-line-strong shadow-glow-violet">
+                <div className="relative aspect-video bg-[#05030f]">
+                  <BrandVideo />
+                  <figcaption className="pointer-events-none absolute top-4 left-4 rounded-full border border-white/15 bg-[#0a0620]/55 px-3 py-1 font-display text-[0.65rem] font-medium tracking-[0.2em] text-[#d6c4ff] uppercase backdrop-blur-md">
+                    Conoce ILLUYANKA LABS
                   </figcaption>
                 </div>
               </figure>
@@ -152,10 +143,13 @@ export function About() {
                 camino más corto hacia el resultado.
               </p>
             </div>
-            <Button href="#contacto" size="lg" className="shrink-0">
-              Cuéntanos tu reto
-              <IconArrowRight className="size-4.5 transition-transform duration-300 group-hover/button:translate-x-1" />
-            </Button>
+            <div className="flex shrink-0 flex-wrap justify-center gap-3">
+              <Button href="#contacto" size="lg">
+                Cuéntanos tu reto
+                <IconArrowRight className="size-4.5 transition-transform duration-300 group-hover/button:translate-x-1" />
+              </Button>
+              <WhatsAppButton size="lg" label="WhatsApp" />
+            </div>
           </GlassCard>
         </Reveal>
       </Container>

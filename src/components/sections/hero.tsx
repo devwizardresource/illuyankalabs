@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { GlassCard } from "@/components/ui/glass-card";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { Emergence } from "@/components/animations/emergence";
 import { Particles } from "@/components/animations/particles";
 import { Reveal } from "@/components/animations/reveal";
@@ -32,7 +33,7 @@ export function Hero() {
       {/* Fondo: doble glow radial + rejilla técnica + partículas */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_72%_32%,var(--glow),transparent_68%),radial-gradient(ellipse_40%_35%_at_12%_78%,rgba(34,217,238,0.08),transparent_70%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_72%_32%,var(--glow),transparent_68%),radial-gradient(ellipse_45%_40%_at_88%_82%,var(--glow-violet),transparent_70%),radial-gradient(ellipse_40%_35%_at_12%_78%,rgba(34,217,238,0.08),transparent_70%),radial-gradient(ellipse_35%_30%_at_18%_12%,rgba(124,58,237,0.14),transparent_70%)]"
       />
       <div aria-hidden className="bg-grid absolute inset-0" />
       <Particles count={24} />
@@ -58,9 +59,9 @@ export function Hero() {
           <Reveal delay={180}>
             <p className="max-w-xl text-lg leading-relaxed text-muted">
               Creamos software a la medida, inteligencia artificial y
-              automatización para empresas, instituciones y startups en
-              Colombia, para que tu organización trabaje más rápido, gaste
-              menos y crezca con seguridad.
+              automatización para empresas, instituciones y startups de
+              Colombia y del mundo, para que tu organización trabaje más
+              rápido, gaste menos y crezca con seguridad.
             </p>
           </Reveal>
 
@@ -72,6 +73,7 @@ export function Hero() {
             <Button href="#contacto" size="lg" variant="secondary">
               Habla con nuestro equipo
             </Button>
+            <WhatsAppButton size="lg" label="WhatsApp" />
           </Reveal>
 
           <Reveal delay={360} as="ul" className="mt-2 flex flex-wrap gap-x-6 gap-y-2">
@@ -94,7 +96,7 @@ export function Hero() {
               {/* Glow que respira detrás del dragón */}
               <div
                 aria-hidden
-                className="animate-breathe absolute inset-[10%] rounded-full bg-[radial-gradient(circle,var(--glow),transparent_62%)] blur-2xl"
+                className="animate-breathe absolute inset-[10%] rounded-full bg-[radial-gradient(circle,var(--glow),var(--glow-violet)_38%,transparent_64%)] blur-2xl"
               />
               {/* Anillos orbitales */}
               <div
@@ -107,13 +109,13 @@ export function Hero() {
                 aria-hidden
                 className="animate-orbit-reverse absolute inset-[13%] rounded-full border border-line/70"
               >
-                <span className="absolute bottom-[14%] left-[8%] size-2 rounded-full bg-primary-bright shadow-[0_0_10px_var(--glow)]" />
+                <span className="absolute bottom-[14%] left-[8%] size-2 rounded-full bg-violet shadow-[0_0_12px_var(--violet)]" />
               </div>
 
               {/* Plataforma: disco de energía + anillos elípticos */}
               <div aria-hidden className="absolute inset-x-[14%] bottom-[3%]">
-                <div className="h-14 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(19,120,249,0.55),rgba(34,217,238,0.12)_55%,transparent_72%)] blur-md" />
-                <div className="absolute top-1/2 left-1/2 h-12 w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border border-primary/40" />
+                <div className="h-14 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(19,120,249,0.55),rgba(124,58,237,0.28)_45%,rgba(34,217,238,0.1)_62%,transparent_74%)] blur-md" />
+                <div className="absolute top-1/2 left-1/2 h-12 w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border border-violet/40" />
                 <div className="absolute top-1/2 left-1/2 h-16 w-[116%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border border-line" />
                 <div className="absolute top-[calc(50%+4px)] left-1/2 h-1.5 w-[62%] -translate-x-1/2 rounded-[100%] bg-accent/50 blur-[3px]" />
               </div>
@@ -132,7 +134,7 @@ export function Hero() {
               </div>
 
               <GlassCard className="absolute top-[13%] -right-2 hidden items-center gap-3 px-4 py-3 sm:flex lg:-right-4">
-                <IconShield className="size-5 text-accent" />
+                <IconShield className="size-5 text-violet-bright" />
                 <div className="text-xs leading-tight">
                   <p className="font-semibold text-foreground">
                     Probado en laboratorio

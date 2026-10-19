@@ -68,9 +68,9 @@ export function Emergence({
           aria-hidden
           className="pointer-events-none absolute -inset-[6%]"
         >
-          <div className="animate-beam absolute top-[6%] bottom-[8%] left-1/2 w-[30%] origin-bottom -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_50%_100%_at_50%_100%,rgba(34,217,238,0.55),rgba(19,120,249,0.28)_55%,transparent_78%)] blur-md" />
-          <div className="animate-spiral absolute inset-[2%] rounded-full bg-[conic-gradient(from_0deg,transparent_0deg,rgba(34,217,238,0.7)_40deg,transparent_82deg,transparent_160deg,rgba(19,120,249,0.6)_205deg,transparent_250deg)] [mask-image:radial-gradient(circle,transparent_52%,black_57%,black_72%,transparent_77%)]" />
-          <div className="animate-spiral absolute inset-[12%] rounded-full [animation-direction:reverse] [animation-duration:1.45s] bg-[conic-gradient(from_140deg,transparent_0deg,rgba(77,163,255,0.65)_50deg,transparent_100deg,transparent_205deg,rgba(34,217,238,0.55)_255deg,transparent_305deg)] [mask-image:radial-gradient(circle,transparent_58%,black_63%,black_79%,transparent_84%)]" />
+          <div className="animate-beam absolute top-[6%] bottom-[8%] left-1/2 w-[30%] origin-bottom -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_50%_100%_at_50%_100%,rgba(34,217,238,0.55),rgba(124,58,237,0.3)_55%,transparent_78%)] blur-md" />
+          <div className="animate-spiral absolute inset-[2%] rounded-full bg-[conic-gradient(from_0deg,transparent_0deg,rgba(34,217,238,0.7)_40deg,transparent_82deg,transparent_160deg,rgba(157,92,255,0.6)_205deg,transparent_250deg)] [mask-image:radial-gradient(circle,transparent_52%,black_57%,black_72%,transparent_77%)]" />
+          <div className="animate-spiral absolute inset-[12%] rounded-full [animation-direction:reverse] [animation-duration:1.45s] bg-[conic-gradient(from_140deg,transparent_0deg,rgba(77,163,255,0.65)_50deg,transparent_100deg,transparent_205deg,rgba(196,161,255,0.55)_255deg,transparent_305deg)] [mask-image:radial-gradient(circle,transparent_58%,black_63%,black_79%,transparent_84%)]" />
         </div>
       ) : null}
       <div

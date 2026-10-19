@@ -35,7 +35,11 @@ export function Particles({ count = 22, className }: ParticlesProps) {
     >
       {Array.from({ length: count }, (_, index) => {
         const size = 1.5 + random() * 3;
-        const isAccent = random() > 0.72;
+        const tone = random();
+        const color =
+          tone > 0.72 ? "var(--accent)" : tone > 0.46 ? "var(--violet)" : "var(--primary)";
+        const glow =
+          tone > 0.72 ? "var(--accent)" : tone > 0.46 ? "var(--glow-violet)" : "var(--glow)";
         return (
           <span
             key={index}
@@ -45,11 +49,9 @@ export function Particles({ count = 22, className }: ParticlesProps) {
               top: `${(8 + random() * 84).toFixed(2)}%`,
               width: `${size.toFixed(1)}px`,
               height: `${size.toFixed(1)}px`,
-              backgroundColor: isAccent ? "var(--accent)" : "var(--primary)",
+              backgroundColor: color,
               opacity: 0.25 + random() * 0.45,
-              boxShadow: `0 0 ${(6 + random() * 8).toFixed(0)}px ${
-                isAccent ? "var(--accent)" : "var(--glow)"
-              }`,
+              boxShadow: `0 0 ${(6 + random() * 8).toFixed(0)}px ${glow}`,
               animationDuration: `${(9 + random() * 12).toFixed(1)}s`,
               animationDelay: `-${(random() * 12).toFixed(1)}s`,
               "--drift-x": `${((random() - 0.5) * 90).toFixed(0)}px`,

@@ -5,7 +5,8 @@ import { NewsletterForm } from "@/components/sections/newsletter-form";
 import { NAV_ITEMS, SOCIAL_LINKS } from "@/constants/navigation";
 import { SERVICES } from "@/constants/services";
 import { siteConfig } from "@/config/site";
-import { IconMail, IconMapPin, IconPhone } from "@/icons/ui";
+import { IconMail, IconMapPin } from "@/icons/ui";
+import { SocialWhatsapp } from "@/icons/social";
 
 const CONTACT_ITEMS = [
   {
@@ -15,10 +16,10 @@ const CONTACT_ITEMS = [
     href: `mailto:${siteConfig.contact.email}`,
   },
   {
-    id: "phone",
-    icon: IconPhone,
-    label: siteConfig.contact.phone,
-    href: siteConfig.contact.phoneHref,
+    id: "whatsapp",
+    icon: SocialWhatsapp,
+    label: `WhatsApp: ${siteConfig.contact.whatsapp.username}`,
+    href: siteConfig.contact.whatsapp.href,
   },
   {
     id: "location",
@@ -31,11 +32,12 @@ const CONTACT_ITEMS = [
 const footerHeading =
   "font-display text-xs font-bold tracking-[0.2em] text-foreground uppercase";
 const footerLink =
-  "text-sm text-muted transition-colors duration-200 hover:text-primary-bright";
+  "text-sm text-muted transition-colors duration-200 hover:text-violet-bright";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-background-soft">
+    <footer className="relative border-t border-line bg-background-soft">
+      <div aria-hidden className="energy-line absolute inset-x-0 -top-px h-px opacity-70" />
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_0.8fr_1fr_1.2fr]">
           <div>
@@ -66,9 +68,9 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className={footerLink}>
+                  <Link href={item.href} className={footerLink}>
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -79,9 +81,9 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {SERVICES.map((service) => (
                 <li key={service.id}>
-                  <a href="#servicios" className={footerLink}>
+                  <Link href="/#servicios" className={footerLink}>
                     {service.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,7 +96,13 @@ export function Footer() {
                 <li key={item.id} className="flex items-center gap-3">
                   <item.icon className="size-4.5 shrink-0 text-primary-bright" />
                   {item.href ? (
-                    <a href={item.href} className={footerLink}>
+                    <a
+                      href={item.href}
+                      className={footerLink}
+                      {...(item.id === "whatsapp"
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
                       {item.label}
                     </a>
                   ) : (

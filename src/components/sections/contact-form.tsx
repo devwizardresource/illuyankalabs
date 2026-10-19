@@ -6,15 +6,22 @@ import { siteConfig } from "@/config/site";
 import { IconArrowRight } from "@/icons/ui";
 import { cn } from "@/utils/cn";
 
-type Field = "name" | "email" | "projectType" | "message";
+type Field = "name" | "email" | "phone" | "projectType" | "message";
 type Errors = Partial<Record<Field, string>>;
 
 const PROJECT_GROUPS = [...new Set(PROJECT_TYPES.map((type) => type.group))];
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+/** Cualquier país: dígitos con espacios, guiones, puntos o paréntesis y un "+" inicial opcional. */
+const PHONE_PATTERN = /^\+?[\d\s().-]+$/;
+
+function isValidPhone(phone: string): boolean {
+  const digits = phone.replace(/\D/g, "").length;
+  return PHONE_PATTERN.test(phone) && digits >= 7 && digits <= 15;
+}
 
 const fieldStyles =
-  "w-full rounded-xl border border-white/15 bg-white/5 px-4 text-sm text-white outline-none transition-colors duration-200 placeholder:text-[#8fa9cf] focus:border-[#4da3ff] focus:ring-2 focus:ring-[#4da3ff]/30 aria-invalid:border-red-300";
+  "w-full rounded-xl border border-white/15 bg-white/5 px-4 text-sm text-white outline-none transition-colors duration-200 placeholder:text-[#8fa9cf] focus:border-[#b48cff] focus:ring-2 focus:ring-[#9d5cff]/30 aria-invalid:border-red-300";
 const labelStyles = "mb-1.5 block text-sm font-medium text-white";
 
 function read(data: FormData, key: string): string {
@@ -64,6 +71,9 @@ export function ContactForm() {
     if (name.length < 2) nextErrors.name = "Escribe tu nombre.";
     if (!EMAIL_PATTERN.test(email)) {
       nextErrors.email = "Escribe un correo electrónico válido.";
+    }
+    if (phone && !isValidPhone(phone)) {
+      nextErrors.phone = "Escribe un número válido, con el indicativo de tu país.";
     }
     const project = PROJECT_TYPES.find((type) => type.value === projectType);
     if (!project) nextErrors.projectType = "Elige el tipo de proyecto.";
@@ -170,11 +180,15 @@ export function ContactForm() {
           id="contacto-phone"
           name="phone"
           type="tel"
-          maxLength={20}
+          maxLength={24}
           autoComplete="tel"
-          placeholder="+57"
+          inputMode="tel"
+          placeholder="Indicativo del país + número"
+          aria-invalid={Boolean(errors.phone) || undefined}
+          aria-describedby={describedBy("phone")}
           className={cn(fieldStyles, "h-11")}
         />
+        {fieldError("phone")}
       </div>
 
       <div className="sm:col-span-2">
@@ -228,7 +242,7 @@ export function ContactForm() {
       <div className="flex flex-col items-start gap-3 sm:col-span-2">
         <button
           type="submit"
-          className="group/button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-primary-strong to-primary px-7 font-display text-base font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow)] transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+          className="group/button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-primary-strong to-violet-strong px-7 font-display text-base font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_0_36px_-8px_var(--glow-violet)] transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
         >
           Enviar mi solicitud
           <IconArrowRight className="size-4.5 transition-transform duration-300 group-hover/button:translate-x-1" />

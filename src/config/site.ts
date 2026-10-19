@@ -15,8 +15,11 @@ export const siteConfig = {
   foundingYear: 2021,
   contact: {
     email: "hello@illuyankalabs.com",
-    phone: "+57 300 944 4200",
-    phoneHref: "tel:+573009444200",
+    /** Usuario de WhatsApp: el enlace se construye a partir de él (sin "@"). */
+    whatsapp: {
+      username: "@illuyankalabs",
+      href: "https://wa.me/illuyankalabs",
+    },
     location: "Bogotá, Colombia",
     country: "CO",
     /** Único tiempo de respuesta comprometido en todo el sitio. */

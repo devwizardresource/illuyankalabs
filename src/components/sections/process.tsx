@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/container";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/animations/reveal";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { PROCESS_STEPS } from "@/constants/process";
 import { siteConfig } from "@/config/site";
 
@@ -44,11 +45,12 @@ export function Process() {
           ))}
         </ol>
 
-        <Reveal>
-          <p className="mt-10 text-center text-sm text-subtle">
+        <Reveal className="mt-10 flex flex-col items-center gap-4">
+          <p className="text-center text-sm text-subtle">
             El primer paso es una conversación: respondemos tu mensaje en{" "}
             {siteConfig.contact.responseTime}.
           </p>
+          <WhatsAppButton label="Empieza la conversación por WhatsApp" />
         </Reveal>
       </Container>
     </section>
