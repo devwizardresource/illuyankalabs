@@ -61,6 +61,7 @@ src/
 - **Seguridad**: CSP restrictiva, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy` en `next.config.ts`; JSON-LD serializado con escape de `<`.
 
 - **Video de marca** (`public/videos/illuyanka-intro.mp4`, 720p H.264 con `faststart`, ~3.4 MB, generado desde `resources/videos/`): se reproduce en silencio solo mientras está en pantalla, con controles propios de pausa y sonido; con `prefers-reduced-motion` no arranca solo.
+- **Logo animado del hero** (`public/videos/logo-entrada.webm`, VP9 con canal alfa + audio Opus, ~1.5 MB): generado desde `resources/logo-entrada.mp4` quitando el fondo verde por dominancia de verde (aguanta el oscurecimiento final del clip) y fijando el último fotograma limpio como pose de reposo (`logo-entrada-final.webp`). Se reproduce al cargar, cada 60 s y al pasar el cursor o tocarlo; el sonido suena tras la primera interacción del visitante y se puede apagar (preferencia guardada). Safari/iOS no componen el alfa de WebM: reciben la pose final con la animación CSS de entrada.
 - **Navegación con rutas absolutas** (`/#seccion`): desde Términos, Privacidad o la 404 el menú vuelve al inicio en la sección elegida.
 
 ## SEO

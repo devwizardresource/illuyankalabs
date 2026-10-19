@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { GlassCard } from "@/components/ui/glass-card";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
-import { Emergence } from "@/components/animations/emergence";
+import { HeroLogo } from "@/components/animations/hero-logo";
 import { Particles } from "@/components/animations/particles";
 import { Reveal } from "@/components/animations/reveal";
 import { Tilt } from "@/components/animations/tilt";
@@ -14,8 +12,6 @@ import {
   IconChevronDown,
   IconSparkles,
 } from "@/icons/ui";
-import { IconShield } from "@/icons/services";
-import logoMark from "@/assets/images/logo-mark.png";
 
 const TRUST_MARKERS = [
   "Código 100 % original",
@@ -89,11 +85,11 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Escena: el dragón sobre una plataforma holográfica */}
+        {/* Escena: logo animado sin fondo entre anillos orbitales */}
         <Reveal delay={200} className="relative mx-auto w-full max-w-130">
           <Tilt className="relative">
             <div className="relative aspect-square">
-              {/* Glow que respira detrás del dragón */}
+              {/* Glow que respira detrás del logo */}
               <div
                 aria-hidden
                 className="animate-breathe absolute inset-[10%] rounded-full bg-[radial-gradient(circle,var(--glow),var(--glow-violet)_38%,transparent_64%)] blur-2xl"
@@ -112,36 +108,10 @@ export function Hero() {
                 <span className="absolute bottom-[14%] left-[8%] size-2 rounded-full bg-violet shadow-[0_0_12px_var(--violet)]" />
               </div>
 
-              {/* Plataforma: disco de energía + anillos elípticos */}
-              <div aria-hidden className="absolute inset-x-[14%] bottom-[3%]">
-                <div className="h-14 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(19,120,249,0.55),rgba(124,58,237,0.28)_45%,rgba(34,217,238,0.1)_62%,transparent_74%)] blur-md" />
-                <div className="absolute top-1/2 left-1/2 h-12 w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border border-violet/40" />
-                <div className="absolute top-1/2 left-1/2 h-16 w-[116%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] border border-line" />
-                <div className="absolute top-[calc(50%+4px)] left-1/2 h-1.5 w-[62%] -translate-x-1/2 rounded-[100%] bg-accent/50 blur-[3px]" />
+              <div className="animate-float absolute inset-0">
+                <HeroLogo />
               </div>
 
-              <div className="animate-float absolute inset-x-[13%] top-[4%] h-[88%]">
-                <Emergence className="size-full">
-                  <Image
-                    src={logoMark}
-                    alt="Dragón de ILLUYANKA LABS envolviendo la letra I"
-                    priority
-                    fetchPriority="high"
-                    sizes="(min-width: 1024px) 480px, (min-width: 640px) 60vw, 82vw"
-                    className="size-full object-contain drop-shadow-[0_0_45px_rgba(19,120,249,0.45)]"
-                  />
-                </Emergence>
-              </div>
-
-              <GlassCard className="absolute top-[13%] -right-2 hidden items-center gap-3 px-4 py-3 sm:flex lg:-right-4">
-                <IconShield className="size-5 text-violet-bright" />
-                <div className="text-xs leading-tight">
-                  <p className="font-semibold text-foreground">
-                    Probado en laboratorio
-                  </p>
-                  <p className="text-subtle">Antes de cada entrega</p>
-                </div>
-              </GlassCard>
             </div>
           </Tilt>
         </Reveal>
