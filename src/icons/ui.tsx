@@ -95,14 +95,6 @@ export function IconMapPin(props: Props) {
   );
 }
 
-export function IconSparkles(props: Props) {
-  return (
-    <svg {...strokeProps} {...props}>
-      <path d="M12 4.5 13.8 9l4.5 1.8-4.5 1.8L12 17l-1.8-4.4L5.7 10.8 10.2 9 12 4.5ZM19 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1Z" />
-    </svg>
-  );
-}
-
 export function IconChevronDown(props: Props) {
   return (
     <svg {...strokeProps} {...props}>

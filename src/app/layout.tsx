@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  generator: siteConfig.generator,
   category: "technology",
   alternates: {
     canonical: "/",
@@ -57,7 +58,6 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: ["/og.png"],
-    creator: "@illuyankalabs",
   },
   robots: {
     index: true,
@@ -82,7 +82,7 @@ export const viewport: Viewport = {
  * Aplica el tema persistido y marca el runtime con JS antes del primer
  * paint: sin FOUC de tema y sin contenido oculto cuando no hay JS.
  */
-const bootstrapScript = `(function(){var d=document.documentElement;d.classList.add("js");try{if(localStorage.getItem("il-theme")==="light"){d.dataset.theme="light"}}catch(e){}})();`;
+const bootstrapScript = `/* Generado por ${siteConfig.generator} */(function(){var d=document.documentElement;d.classList.add("js");try{if(localStorage.getItem("il-theme")==="light"){d.dataset.theme="light"}}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

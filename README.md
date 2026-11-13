@@ -2,7 +2,7 @@
 
 # ILLUYANKA LABS — Landing Page oficial
 
-**Software · IA · Automatización · Cloud**
+**Software · Automatización · IA · Cloud**
 
 Landing page de producción construida con Next.js 15, React 19, TypeScript y Tailwind CSS v4, desde Colombia.
 Identidad visual derivada del logo: cromo metálico, azul eléctrico `#1378f9`, violeta futurista `#9d5cff` y cian de energía `#22d9ee` sobre navy profundo.
@@ -31,14 +31,14 @@ src/
 ├── components/
 │   ├── ui/         Átomos reutilizables: Button, Badge, Container, GlassCard,
 │   │               SectionHeading, IconBox, Logo, BrandVideo, ThemeToggle
-│   ├── sections/   Organismos de la landing: Header, Hero, About, Services, Process,
-│   │               Technologies, Contact, ContactForm (abre el correo del visitante), Footer, NewsletterForm
+│   ├── sections/   Organismos de la landing: Header, Hero, About, BrandDna, Services, Process,
+│   │               Technologies, Faq, Contact, ContactForm (abre el correo del visitante), Footer, NewsletterForm
 │   └── animations/ Reveal (IO + CSS), Particles (seed determinista),
 │                   Tilt (parallax 3D), Emergence (isotipo emergiendo en espiral)
 ├── hooks/          use-in-view, use-theme, use-scroll-lock
-├── icons/          SVG propios: ui, services, tech (marcas geométricas), social
+├── icons/          SVG: ui, services, tech (logos oficiales), social (WhatsApp)
 ├── lib/            structured-data (JSON-LD), rate-limit (límite de envíos por IP)
-├── constants/      Contenido tipado: navigation, services, technologies, about, process
+├── constants/      Contenido tipado: navigation, services, technologies, about, process, faq
 ├── config/         site.ts — única fuente de verdad (nombre, URL, contacto, redes)
 ├── services/       newsletter.ts — Server Action (validación + honeypot + límite)
 ├── types/          Contratos de contenido (Service, CaseStudy, Testimonial…)
@@ -56,7 +56,7 @@ src/
 - **Partículas renderizadas en servidor** con PRNG determinista (mulberry32): mismo HTML en servidor y cliente → sin errores de hidratación y 0 KB de JS.
 - **Tema oscuro por defecto, claro opcional.** Variables CSS semánticas conmutadas por `data-theme`; script inline anti-FOUC lee `localStorage` antes del primer paint.
 - **Contraste verificado**: auditoría axe-core (WCAG 2A/2AA/2.1AA) con **cero violaciones en ambos temas**. Los botones primarios usan `#0d63d8` (5.5:1 con texto blanco).
-- **Marcas tecnológicas propias**: SVG geométricos minimalistas + etiqueta de texto (sin reproducir assets de terceros con licencias inciertas).
+- **Logos tecnológicos oficiales**: trazados vectoriales de Simple Icons (CC0) pintados con el color de cada marca, nítidos en cualquier densidad de pantalla.
 - **Server Action del newsletter** con honeypot antibots y validación en servidor; funciona incluso sin JavaScript (progressive enhancement). El proveedor de email se conecta en `src/services/newsletter.ts`.
 - **Seguridad**: CSP restrictiva, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy` en `next.config.ts`; JSON-LD serializado con escape de `<`.
 
@@ -66,7 +66,7 @@ src/
 
 ## SEO
 
-Metadata completa (title template, description, keywords, canonical), Open Graph + Twitter Cards con imagen 1200×630, `robots.ts`, `sitemap.ts`, `manifest.ts` (PWA), JSON-LD (`Organization`, `WebSite`), `lang="es"`, favicons e iconos maskable generados desde el logo.
+Metadata completa (title template, description, keywords, canonical), Open Graph + Twitter Cards con imagen 1200×630, `robots.ts`, `sitemap.ts`, `manifest.ts` (PWA), JSON-LD (`Organization` + `ProfessionalService` con catálogo de servicios, `WebSite`, `FAQPage`), `<meta name="generator">` y `humans.txt` con la firma de ILLUYANKA LABS, `lang="es"`, favicons e iconos maskable generados desde el logo.
 
 ## Desarrollo
 

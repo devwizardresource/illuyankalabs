@@ -1,0 +1,9 @@
+/* TEAM */
+Desarrollado por: ILLUYANKA LABS
+Sitio: https://illuyankalabs.com
+Ubicación: Bogotá, Colombia
+
+/* SITE */
+Generado por: ILLUYANKA LABS · illuyankalabs.com
+Idioma: Español
+Tecnología: Next.js, React, TypeScript, Tailwind CSS

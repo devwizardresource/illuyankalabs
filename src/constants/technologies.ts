@@ -15,9 +15,13 @@ import {
   TechTypeScript,
 } from "@/icons/tech";
 
+/**
+ * `brandColor`: color oficial del logo, ajustado para leerse en ambos temas
+ * (las marcas negras usan el color de texto del tema).
+ */
 export const TECHNOLOGIES: readonly Technology[] = [
   { id: "aws", name: "AWS", brandColor: "#ff9900", icon: TechAws },
-  { id: "azure", name: "Azure", brandColor: "#0f80d7", icon: TechAzure },
+  { id: "azure", name: "Azure", brandColor: "#0089d6", icon: TechAzure },
   { id: "docker", name: "Docker", brandColor: "#2496ed", icon: TechDocker },
   {
     id: "kubernetes",
@@ -25,7 +29,7 @@ export const TECHNOLOGIES: readonly Technology[] = [
     brandColor: "#326ce5",
     icon: TechKubernetes,
   },
-  { id: "linux", name: "Linux", brandColor: "#f5c518", icon: TechLinux },
+  { id: "linux", name: "Linux", brandColor: "#fcc624", icon: TechLinux },
   { id: "python", name: "Python", brandColor: "#4b8bbe", icon: TechPython },
   {
     id: "typescript",
@@ -35,13 +39,13 @@ export const TECHNOLOGIES: readonly Technology[] = [
   },
   { id: "node", name: "Node.js", brandColor: "#5fa04e", icon: TechNode },
   { id: "react", name: "React", brandColor: "#61dafb", icon: TechReact },
-  { id: "nextjs", name: "Next.js", brandColor: "#8b98a5", icon: TechNext },
-  { id: "openai", name: "OpenAI", brandColor: "#10a37f", icon: TechOpenAi },
+  { id: "nextjs", name: "Next.js", brandColor: "var(--fg)", icon: TechNext },
+  { id: "openai", name: "OpenAI", brandColor: "var(--fg)", icon: TechOpenAi },
   {
     id: "postgresql",
     name: "PostgreSQL",
-    brandColor: "#699eca",
+    brandColor: "#4f8be8",
     icon: TechPostgres,
   },
-  { id: "github", name: "GitHub", brandColor: "#8b98a5", icon: TechGithub },
+  { id: "github", name: "GitHub", brandColor: "var(--fg)", icon: TechGithub },
 ] as const;

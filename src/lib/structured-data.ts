@@ -1,4 +1,6 @@
 import { siteConfig } from "@/config/site";
+import { SERVICES } from "@/constants/services";
+import { FAQ_ITEMS } from "@/constants/faq";
 
 /**
  * Datos estructurados Schema.org (JSON-LD) para buscadores.
@@ -7,13 +9,15 @@ import { siteConfig } from "@/config/site";
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
     logo: `${siteConfig.url}/icons/icon-512.png`,
+    image: `${siteConfig.url}/og.png`,
     description: siteConfig.description,
+    slogan: siteConfig.tagline,
     foundingDate: String(siteConfig.foundingYear),
     email: siteConfig.contact.email,
     address: {
@@ -33,8 +37,22 @@ export function organizationJsonLd() {
       { "@type": "Place", name: "Latinoamérica" },
       { "@type": "Place", name: "Mundo" },
     ],
-    sameAs: [...Object.values(siteConfig.social), siteConfig.contact.whatsapp.href],
     knowsAbout: [...siteConfig.keywords],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Soluciones tecnológicas",
+      itemListElement: SERVICES.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: `${service.outcome} ${service.description}`,
+          serviceType: service.title,
+          provider: { "@id": `${siteConfig.url}/#organization` },
+          areaServed: "Colombia",
+        },
+      })),
+    },
   };
 }
 
@@ -47,6 +65,18 @@ export function websiteJsonLd() {
     url: siteConfig.url,
     inLanguage: siteConfig.language,
     publisher: { "@id": `${siteConfig.url}/#organization` },
+  };
+}
+
+export function faqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
 }
 

@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { LogoGlyph } from "@/components/ui/logo";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { HeroLogo } from "@/components/animations/hero-logo";
 import { Particles } from "@/components/animations/particles";
@@ -10,11 +11,10 @@ import {
   IconArrowRight,
   IconCheck,
   IconChevronDown,
-  IconSparkles,
 } from "@/icons/ui";
 
 const TRUST_MARKERS = [
-  "Código 100 % original",
+  "IA + inteligencia humana",
   "Probado en laboratorio",
   "Seguro desde el diseño",
   "Listo para crecer",
@@ -38,8 +38,8 @@ export function Hero() {
         <div className="flex max-w-2xl flex-col items-start gap-6">
           <Reveal>
             <Badge>
-              <IconSparkles className="size-3.5" />
-              Software · IA · Automatización · Bogotá, Colombia
+              <LogoGlyph className="size-3.5" />
+              Software · Automatización · IA · Bogotá, Colombia
             </Badge>
           </Reveal>
 
@@ -54,9 +54,9 @@ export function Hero() {
 
           <Reveal delay={180}>
             <p className="max-w-xl text-lg leading-relaxed text-muted">
-              Creamos software a la medida, inteligencia artificial y
-              automatización para empresas, instituciones y startups de
-              Colombia y del mundo, para que tu organización trabaje más
+              Creamos software a la medida, automatización de procesos e
+              inteligencia artificial para empresas privadas, entidades
+              públicas, instituciones y startups de Colombia y del mundo, para que tu organización trabaje más
               rápido, gaste menos y crezca con seguridad.
             </p>
           </Reveal>

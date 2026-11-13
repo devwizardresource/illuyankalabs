@@ -43,10 +43,10 @@ export function Footer() {
           <div>
             <Logo size="lg" alt="Isotipo de ILLUYANKA LABS: dragón envolviendo la letra I" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              Software a la medida, inteligencia artificial y automatización
+              Software a la medida, automatización e inteligencia artificial
               hechos en Bogotá para organizaciones que quieren crecer.
             </p>
-            <ul className="mt-6 flex gap-3" aria-label="Redes sociales">
+            <ul className="mt-6 flex gap-3" aria-label="Canales oficiales">
               {SOCIAL_LINKS.map((social) => (
                 <li key={social.id}>
                   <a

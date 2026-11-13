@@ -22,7 +22,7 @@ export interface Service {
 export interface Technology {
   id: string;
   name: string;
-  /** Color oficial de la marca, aplicado al hacer hover. */
+  /** Color oficial de la marca (hex o variable CSS) con el que se pinta el logo. */
   brandColor: string;
   icon: IconComponent;
 }
@@ -46,4 +46,10 @@ export interface SocialLink {
   label: string;
   href: string;
   icon: IconComponent;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
 }

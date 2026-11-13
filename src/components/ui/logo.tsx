@@ -53,3 +53,23 @@ export function Logo({
     </span>
   );
 }
+
+/**
+ * Isotipo monocromo del tamaño de un icono: la silueta del logo usada
+ * como máscara y pintada con el color de texto actual (`currentColor`).
+ */
+export function LogoGlyph({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      style={{
+        maskImage: `url(${logoMark.src})`,
+        WebkitMaskImage: `url(${logoMark.src})`,
+      }}
+      className={cn(
+        "inline-block shrink-0 bg-current mask-contain mask-center mask-no-repeat",
+        className,
+      )}
+    />
+  );
+}

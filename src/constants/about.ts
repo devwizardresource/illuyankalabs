@@ -14,7 +14,7 @@ import { IconUsers } from "@/icons/ui";
 
 /** Entrada: el problema del cliente y cómo lo resolvemos. */
 export const ABOUT_INTRO =
-  "Procesos lentos, sistemas que no escalan y herramientas que no se hablan entre sí frenan a cualquier organización. Lo resolvemos con software a la medida, inteligencia artificial y automatización. Construido para durar y probado antes de llegar a tus manos.";
+  "Procesos lentos, sistemas que no escalan y herramientas que no se hablan entre sí frenan a cualquier organización. Lo resolvemos con software a la medida, automatización e inteligencia artificial. Construido para durar y probado antes de llegar a tus manos.";
 
 /** Lo que representa nuestro trabajo. */
 export const PURPOSE: readonly string[] = [
@@ -28,7 +28,7 @@ export const COMMITMENTS: readonly Feature[] = [
     id: "inteligencia",
     title: "Inteligencia aplicada a tu negocio",
     description:
-      "Escribimos código 100 % original para tu caso. No revendemos ni maquillamos soluciones de terceros.",
+      "Trabajamos con IA e inteligencia humana: la IA acelera el desarrollo y nuestro equipo diseña, revisa y responde por cada línea de código de tu solución.",
     icon: IconChip,
   },
   {
@@ -92,7 +92,7 @@ export const SEGMENTS: readonly Feature[] = [
     id: "empresas",
     title: "Empresas en transformación digital",
     description:
-      "Conectamos sistemas, automatizamos procesos y convertimos datos en decisiones.",
+      "Pymes y grandes empresas: conectamos sistemas, automatizamos procesos y convertimos datos en decisiones.",
     icon: IconBuilding,
   },
   {
@@ -104,9 +104,9 @@ export const SEGMENTS: readonly Feature[] = [
   },
   {
     id: "publico",
-    title: "Entidades públicas",
+    title: "Entidades públicas y privadas",
     description:
-      "Trámites digitales más ágiles, seguros y fáciles de usar para la ciudadanía.",
+      "Trámites y servicios digitales más ágiles, seguros y fáciles de usar para ciudadanos, clientes y afiliados.",
     icon: IconLandmark,
   },
   {
@@ -114,6 +114,42 @@ export const SEGMENTS: readonly Feature[] = [
     title: "Startups",
     description:
       "Productos con una base sólida para validar rápido y escalar sin rehacer el código.",
+    icon: IconRocket,
+  },
+] as const;
+
+/** Origen del nombre: abre el bloque "ADN de nuestra marca". */
+export const BRAND_ORIGIN =
+  "Illuyanka es el dragón-serpiente de la antigua mitología hitita: una fuerza que se transforma y vuelve a levantarse. Llevamos su nombre porque eso hacemos con la tecnología de nuestros clientes.";
+
+/** Los rasgos que definen la marca: lo que no cambia en ningún proyecto. */
+export const BRAND_DNA: readonly Feature[] = [
+  {
+    id: "transformacion",
+    title: "Transformación",
+    description:
+      "Como el dragón que nos da nombre, convertimos procesos lentos en sistemas ágiles que se adaptan y crecen.",
+    icon: IconEvolve,
+  },
+  {
+    id: "inteligencia-hibrida",
+    title: "Inteligencia híbrida",
+    description:
+      "IA para ir más rápido, criterio humano para decidir bien. Ninguna de las dos por sí sola.",
+    icon: IconChip,
+  },
+  {
+    id: "rigor",
+    title: "Rigor de laboratorio",
+    description:
+      "Medimos, probamos y validamos antes de entregar. La precisión es parte de nuestro nombre: LABS.",
+    icon: IconTarget,
+  },
+  {
+    id: "origen",
+    title: "Hecho en Colombia",
+    description:
+      "Talento colombiano construyendo tecnología de clase mundial para organizaciones de cualquier país.",
     icon: IconRocket,
   },
 ] as const;

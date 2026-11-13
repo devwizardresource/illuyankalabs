@@ -10,7 +10,7 @@ import {
   IconShield,
 } from "@/icons/services";
 
-/** Ordenados por demanda: software, IA y automatización primero. */
+/** Orden de la marca: software, automatización e IA primero. */
 export const SERVICES: readonly Service[] = [
   {
     id: "software",
@@ -27,20 +27,6 @@ export const SERVICES: readonly Service[] = [
     icon: IconCode,
   },
   {
-    id: "ia",
-    title: "Inteligencia artificial",
-    outcome: "Respuestas y decisiones más rápidas.",
-    description:
-      "Asistentes que responden con la información de tu empresa y agentes que hacen tareas por tu equipo.",
-    capabilities: [
-      "Asistentes con los datos de tu empresa",
-      "Lectura de documentos e imágenes",
-      "Agentes que ejecutan tareas",
-    ],
-    cta: "Quiero aplicar IA en mi empresa",
-    icon: IconNeural,
-  },
-  {
     id: "automatizacion",
     title: "Automatización de procesos",
     outcome: "Menos tareas repetitivas, menos errores.",
@@ -53,6 +39,20 @@ export const SERVICES: readonly Service[] = [
     ],
     cta: "Quiero automatizar mis procesos",
     icon: IconBot,
+  },
+  {
+    id: "ia",
+    title: "Inteligencia artificial",
+    outcome: "Respuestas y decisiones más rápidas.",
+    description:
+      "Asistentes que responden con la información de tu empresa y agentes que hacen tareas por tu equipo.",
+    capabilities: [
+      "Asistentes con los datos de tu empresa",
+      "Lectura de documentos e imágenes",
+      "Agentes que ejecutan tareas",
+    ],
+    cta: "Quiero aplicar IA en mi empresa",
+    icon: IconNeural,
   },
   {
     id: "cloud",
@@ -149,10 +149,10 @@ export const PROJECT_TYPES: readonly ProjectType[] = [
   { value: "portal", label: "Portal de clientes, proveedores o trámites", group: "Software y aplicaciones" },
   { value: "educativa", label: "Plataforma educativa o campus virtual", group: "Software y aplicaciones" },
   { value: "mvp", label: "Producto mínimo viable (MVP) para startup", group: "Software y aplicaciones" },
-  { value: "chatbot", label: "Chatbot o asistente virtual (web o WhatsApp)", group: "IA y automatización" },
-  { value: "documentos", label: "Lectura automática de documentos y facturas", group: "IA y automatización" },
-  { value: "integracion", label: "Integración entre sistemas", group: "IA y automatización" },
-  { value: "reportes", label: "Reportes e indicadores automáticos", group: "IA y automatización" },
+  { value: "chatbot", label: "Chatbot o asistente virtual (web o WhatsApp)", group: "Automatización e IA" },
+  { value: "documentos", label: "Lectura automática de documentos y facturas", group: "Automatización e IA" },
+  { value: "integracion", label: "Integración entre sistemas", group: "Automatización e IA" },
+  { value: "reportes", label: "Reportes e indicadores automáticos", group: "Automatización e IA" },
   { value: "modernizacion", label: "Modernizar o migrar un sistema existente", group: "Mejorar lo que ya tengo" },
   { value: "soporte", label: "Soporte y mantenimiento de software", group: "Mejorar lo que ya tengo" },
   { value: "auditoria", label: "Auditoría de seguridad o de código", group: "Mejorar lo que ya tengo" },

@@ -17,11 +17,11 @@ export function Services() {
             eyebrow="Servicios"
             title={
               <>
-                Soluciones que se notan en tus{" "}
+                Soluciones tecnológicas que se notan en tus{" "}
                 <span className="text-gradient">resultados</span>
               </>
             }
-            description="Desarrollo de software, inteligencia artificial y automatización para empresas e instituciones en Colombia. Cada solución empieza por el resultado que necesitas."
+            description="Desarrollo de software, automatización de procesos e inteligencia artificial para empresas y entidades públicas y privadas en Colombia y el mundo. Cada solución empieza por el resultado que necesitas."
           />
         </Reveal>
 

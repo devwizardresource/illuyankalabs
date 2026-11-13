@@ -23,7 +23,7 @@ function TechTile({
         decorative && "motion-reduce:hidden",
       )}
     >
-      <Icon className="size-7 shrink-0 text-subtle transition-colors duration-300 group-hover/tile:text-(--brand)" />
+      <Icon className="size-7 shrink-0 text-(--brand) opacity-85 transition-all duration-300 group-hover/tile:scale-110 group-hover/tile:opacity-100 group-hover/tile:drop-shadow-[0_0_10px_var(--brand)]" />
       <span className="text-sm font-medium whitespace-nowrap text-muted transition-colors duration-300 group-hover/tile:text-foreground">
         {technology.name}
       </span>
