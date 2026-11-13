@@ -8,6 +8,7 @@ import {
   IconLandmark,
   IconLock,
   IconRocket,
+  IconShield,
   IconTarget,
 } from "@/icons/services";
 import { IconUsers } from "@/icons/ui";
@@ -120,36 +121,36 @@ export const SEGMENTS: readonly Feature[] = [
 
 /** Origen del nombre: abre el bloque "ADN de nuestra marca". */
 export const BRAND_ORIGIN =
-  "Illuyanka es el dragón-serpiente de la antigua mitología hitita: una fuerza que se transforma y vuelve a levantarse. Llevamos su nombre porque eso hacemos con la tecnología de nuestros clientes.";
+  "Nuestra marca nace de las cualidades del dragón: un guardián fuerte, sabio y siempre alerta que protege lo que más valora. Así cuidamos la tecnología y la información de nuestros clientes: con la seguridad como base de todo lo que construimos.";
 
-/** Los rasgos que definen la marca: lo que no cambia en ningún proyecto. */
+/** Cualidades del dragón convertidas en compromisos: la seguridad, primero. */
 export const BRAND_DNA: readonly Feature[] = [
   {
-    id: "transformacion",
-    title: "Transformación",
+    id: "proteccion",
+    title: "Protección",
     description:
-      "Como el dragón que nos da nombre, convertimos procesos lentos en sistemas ágiles que se adaptan y crecen.",
-    icon: IconEvolve,
+      "Como un dragón guardián, protegemos tus datos y tu operación con seguridad desde el diseño en cada capa de la solución.",
+    icon: IconShield,
   },
   {
-    id: "inteligencia-hibrida",
-    title: "Inteligencia híbrida",
+    id: "vigilancia",
+    title: "Vigilancia",
     description:
-      "IA para ir más rápido, criterio humano para decidir bien. Ninguna de las dos por sí sola.",
-    icon: IconChip,
-  },
-  {
-    id: "rigor",
-    title: "Rigor de laboratorio",
-    description:
-      "Medimos, probamos y validamos antes de entregar. La precisión es parte de nuestro nombre: LABS.",
+      "Siempre alerta: monitoreamos, probamos y cerramos brechas antes de que alguien pueda aprovecharlas.",
     icon: IconTarget,
   },
   {
-    id: "origen",
-    title: "Hecho en Colombia",
+    id: "fortaleza",
+    title: "Fortaleza",
     description:
-      "Talento colombiano construyendo tecnología de clase mundial para organizaciones de cualquier país.",
-    icon: IconRocket,
+      "Sistemas robustos y confiables que resisten la carga del día a día y crecen sin perder estabilidad.",
+    icon: IconLock,
+  },
+  {
+    id: "sabiduria",
+    title: "Sabiduría",
+    description:
+      "IA para ir más rápido y criterio humano para decidir bien: inteligencia aplicada con responsabilidad.",
+    icon: IconChip,
   },
 ] as const;

@@ -32,8 +32,8 @@ export function BrandDna() {
                   id="adn-titulo"
                   className="mt-3 font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl"
                 >
-                  Fuerza de dragón,{" "}
-                  <span className="text-gradient">precisión de laboratorio</span>
+                  La fuerza del dragón,{" "}
+                  <span className="text-gradient">al servicio de tu seguridad</span>
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
                   {BRAND_ORIGIN}
